@@ -3,8 +3,8 @@ peerapp = (function() {
 
     console.log("Peer client started");
 
-    var PEER_SERVER = 'localhost';
-    var PORT = 9000;
+    var PEER_SERVER = 'my-peer.herokuapp.com';
+    var PORT = 443;
     var connectedPeers = {};
     var myPeerID = generateRandomID(4);
     var peer;
@@ -20,7 +20,7 @@ peerapp = (function() {
         if(peer && peer.disconnected == false) {
             peer.disconnect()
         }
-        peer = new Peer(myPeerID, { host: PEER_SERVER, port: PORT, path: '/myapp', secure: false });  
+        peer = new Peer(myPeerID, { host: PEER_SERVER, port: PORT, path: '/', secure: true });  
         peerCallbacks(peer);
     }    
     // var peer = new Peer({ host: 'my-peer.herokuapp.com', port: '443', path: '/', secure: true });
